@@ -1,12 +1,15 @@
 import { handler } from '../src'
+import fetchThumb from '../src/fetch-thumb'
+jest.mock('../src/fetch-thumb')
 
 describe('handler()', () => {
-  it('returns dummy response', async () => {
+  it('calls fetchThumb()', async () => {
     expect.assertions(1)
 
-    return expect(handler()).resolves.toEqual({
-      statusCode: 200,
-      body: JSON.stringify({}),
-    })
+    await handler({
+      pathParameters: { key: 'image.jpg' },
+    } as any)
+
+    return expect(fetchThumb).toHaveBeenCalledWith('image.jpg')
   })
 })

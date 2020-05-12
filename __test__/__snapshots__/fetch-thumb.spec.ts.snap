@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fetch-thumb() resolves arrayBuffer 1`] = `
+Object {
+  "config": Object {
+    "baseURL": "https://api.view-expander.net/v1",
+    "data": undefined,
+    "headers": Object {
+      "Accept": "application/json, text/plain, */*",
+    },
+    "maxContentLength": -1,
+    "method": "get",
+    "params": Object {
+      "size": "thumb",
+    },
+    "responseType": "arraybuffer",
+    "timeout": 180000,
+    "transformRequest": Array [
+      [Function],
+    ],
+    "transformResponse": Array [
+      [Function],
+    ],
+    "url": "/photo/image.jpg",
+    "validateStatus": [Function],
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+  },
+  "data": ArrayBuffer [],
+  "headers": Object {
+    "Content-Type": "image/jpeg",
+  },
+  "request": Object {
+    "responseUrl": "/photo/image.jpg",
+  },
+  "status": 200,
+}
+`;
