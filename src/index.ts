@@ -22,11 +22,9 @@ export async function handler(
         throw err
       })
 
-    console.log(res)
-
     return {
       statusCode: res.$response.httpResponse.statusCode,
-      body: JSON.stringify({ key: null }),
+      body: JSON.stringify(res),
     }
   } catch (err) {
     return {

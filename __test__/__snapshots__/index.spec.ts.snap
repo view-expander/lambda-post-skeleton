@@ -16,7 +16,7 @@ Object {
 
 exports[`handler() returns response 1`] = `
 Object {
-  "body": "{\\"key\\":null}",
+  "body": "{\\"$response\\":{\\"httpResponse\\":{\\"statusCode\\":200}},\\"ETag\\":\\"d8d1c86cb0147624bb493f41483b7383\\"}",
   "statusCode": 200,
 }
 `;
