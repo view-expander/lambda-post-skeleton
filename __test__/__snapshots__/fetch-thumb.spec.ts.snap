@@ -6,7 +6,7 @@ Object {
     "baseURL": "https://api.view-expander.net/v1",
     "data": undefined,
     "headers": Object {
-      "Accept": "application/json, text/plain, */*",
+      "Accept": "image/jpeg",
     },
     "maxContentLength": -1,
     "method": "get",
@@ -28,7 +28,7 @@ Object {
   },
   "data": ArrayBuffer [],
   "headers": Object {
-    "Content-Type": "image/jpeg",
+    "content-type": "image/jpeg",
   },
   "request": Object {
     "responseUrl": "/photo/image.jpg",

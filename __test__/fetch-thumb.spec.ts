@@ -18,7 +18,7 @@ describe('fetch-thumb()', () => {
     expect.assertions(1)
 
     mock.onGet('/photo/image.jpg').reply(200, DUMMY_IMAGE, {
-      'Content-Type': 'image/jpeg',
+      'content-type': 'image/jpeg',
     })
 
     return expect(fetchThumb('image.jpg')).resolves.toMatchSnapshot()
