@@ -1,6 +1,9 @@
+import { DUMMY_IMAGE } from './../src/__mocks__/fetch-thumb'
 import { handler } from '../src'
 import fetchThumb from '../src/fetch-thumb'
+import trace from '../src/trace'
 jest.mock('../src/fetch-thumb')
+jest.mock('../src/trace')
 
 describe('handler()', () => {
   it('calls fetchThumb()', async () => {
@@ -11,6 +14,25 @@ describe('handler()', () => {
     } as any)
 
     return expect(fetchThumb).toHaveBeenCalledWith('image.jpg')
+  })
+
+  it('calls trace()', async () => {
+    expect.assertions(1)
+
+    await handler({
+      pathParameters: { key: 'image.jpg' },
+    } as any)
+
+    return expect(trace).toHaveBeenCalled()
+  })
+
+  it('returns response', () => {
+    expect.assertions(1)
+    return expect(
+      handler({
+        pathParameters: { key: 'image.jpg' },
+      } as any)
+    ).resolves.toMatchSnapshot()
   })
 
   it('catchs response error', async () => {

@@ -1,5 +1,6 @@
 import { APIGatewayProxyResult, APIGatewayEvent } from 'aws-lambda'
 import fetchThumb from './fetch-thumb'
+import trace from './trace'
 
 export async function handler(
   event: APIGatewayEvent
@@ -13,13 +14,15 @@ export async function handler(
     }
 
     const { key } = event.pathParameters
-    const res = await fetchThumb(key).catch((err) => {
-      throw err
-    })
+    const res = await fetchThumb(key)
+      .then((thumb) => trace(Buffer.from(thumb.data)))
+      .catch((err) => {
+        throw err
+      })
 
     return {
       statusCode: 200,
-      body: JSON.stringify({}),
+      body: JSON.stringify({ svg: res }),
     }
   } catch (err) {
     return {

@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`trace() rejects error 1`] = `[Error: DUMMY_ERROR]`;

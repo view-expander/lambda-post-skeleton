@@ -23,7 +23,8 @@
   "dependencies": {
     "aws-sdk": "^2.673.0",
     "axios": "^0.19.2",
-    "imgix-core-js": "^2.3.1"
+    "imgix-core-js": "^2.3.1",
+    "potrace": "^2.1.6"
   },
   "devDependencies": {
     "@maboroshi/eslint-config": "^2.0.9",
