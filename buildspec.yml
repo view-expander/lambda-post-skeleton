@@ -18,6 +18,6 @@ phases:
 artifacts:
   files:
     - '**/*.js'
-  name: lambda-get-photo
+  name: lambda-post-skeleton
   base-directory: 'dist'
   discard-paths: yes
