@@ -1,7 +1,5 @@
 import { APIGatewayProxyResult, APIGatewayEvent } from 'aws-lambda'
-import fetchThumb from './fetch-thumb'
-import optimize from './optimize'
-import trace from './trace'
+import createSkeletonImage from './create-skeleton-image'
 
 export async function handler(
   event: APIGatewayEvent
@@ -15,12 +13,9 @@ export async function handler(
     }
 
     const { key } = event.pathParameters
-    const res = await fetchThumb(key)
-      .then((thumb) => trace(Buffer.from(thumb.data)))
-      .then(optimize)
-      .catch((err) => {
-        throw err
-      })
+    const res = await createSkeletonImage(key).catch((err) => {
+      throw err
+    })
 
     return {
       statusCode: 200,

@@ -1,41 +1,16 @@
-import { DUMMY_IMAGE } from './../src/__mocks__/fetch-thumb'
 import { handler } from '../src'
-import fetchThumb from '../src/fetch-thumb'
-import optimize from '../src/optimize'
-import trace from '../src/trace'
-jest.mock('../src/fetch-thumb')
-jest.mock('../src/optimize')
-jest.mock('../src/trace')
+import createSkeletonImage from '../src/create-skeleton-image'
+jest.mock('../src/create-skeleton-image')
 
 describe('handler()', () => {
-  it('calls fetchThumb()', async () => {
+  it('calls createSkeletonImage()', async () => {
     expect.assertions(1)
 
     await handler({
       pathParameters: { key: 'image.jpg' },
     } as any)
 
-    return expect(fetchThumb).toHaveBeenCalledWith('image.jpg')
-  })
-
-  it('calls trace()', async () => {
-    expect.assertions(1)
-
-    await handler({
-      pathParameters: { key: 'image.jpg' },
-    } as any)
-
-    return expect(trace).toHaveBeenCalled()
-  })
-
-  it('calls optimize()', async () => {
-    expect.assertions(1)
-
-    await handler({
-      pathParameters: { key: 'image.jpg' },
-    } as any)
-
-    return expect(optimize).toHaveBeenCalled()
+    return expect(createSkeletonImage).toHaveBeenCalledWith('image.jpg')
   })
 
   it('returns response', () => {
@@ -49,7 +24,7 @@ describe('handler()', () => {
 
   it('catchs response error', async () => {
     expect.assertions(1)
-    ;(fetchThumb as jest.Mock).mockRejectedValueOnce({
+    ;(createSkeletonImage as jest.Mock).mockRejectedValueOnce({
       message: 'Bad Request',
       response: {
         status: 400,
@@ -65,7 +40,7 @@ describe('handler()', () => {
 
   it('cacths network error', async () => {
     expect.assertions(1)
-    ;(fetchThumb as jest.Mock).mockRejectedValueOnce({
+    ;(createSkeletonImage as jest.Mock).mockRejectedValueOnce({
       message: 'Network Error',
     })
 
