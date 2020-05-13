@@ -23,7 +23,7 @@ export async function handler(
     }
   } catch (err) {
     return {
-      statusCode: err.statusCode || 400,
+      statusCode: err.response?.status || err.statusCode || 500,
       body: JSON.stringify(err.message),
     }
   }

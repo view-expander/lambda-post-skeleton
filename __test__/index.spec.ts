@@ -12,4 +12,33 @@ describe('handler()', () => {
 
     return expect(fetchThumb).toHaveBeenCalledWith('image.jpg')
   })
+
+  it('catchs response error', async () => {
+    expect.assertions(1)
+    ;(fetchThumb as jest.Mock).mockRejectedValueOnce({
+      message: 'Bad Request',
+      response: {
+        status: 400,
+      },
+    })
+
+    return expect(
+      handler({
+        pathParameters: { key: 'image.jpg' },
+      } as any)
+    ).resolves.toMatchSnapshot()
+  })
+
+  it('cacths network error', async () => {
+    expect.assertions(1)
+    ;(fetchThumb as jest.Mock).mockRejectedValueOnce({
+      message: 'Network Error',
+    })
+
+    return expect(
+      handler({
+        pathParameters: { key: 'image.jpg' },
+      } as any)
+    ).resolves.toMatchSnapshot()
+  })
 })
