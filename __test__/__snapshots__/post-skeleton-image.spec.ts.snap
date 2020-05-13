@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`postSkeletonImage() will be succeed 1`] = `
+Object {
+  "$response": Object {
+    "httpResponse": Object {
+      "statusCode": 200,
+    },
+  },
+}
+`;

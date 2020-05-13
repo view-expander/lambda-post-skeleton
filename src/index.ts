@@ -1,5 +1,6 @@
-import { APIGatewayProxyResult, APIGatewayEvent } from 'aws-lambda'
+import { APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda'
 import createSkeletonImage from './create-skeleton-image'
+import postSkeletonImage from './post-skeleton-image'
 
 export async function handler(
   event: APIGatewayEvent
@@ -13,13 +14,19 @@ export async function handler(
     }
 
     const { key } = event.pathParameters
-    const res = await createSkeletonImage(key).catch((err) => {
-      throw err
-    })
+    const res = await createSkeletonImage(key)
+      .then((svg) =>
+        postSkeletonImage(svg, key.replace(/^(.+)\.jpg$/, '$1.svg'))
+      )
+      .catch((err) => {
+        throw err
+      })
+
+    console.log(res)
 
     return {
-      statusCode: 200,
-      body: JSON.stringify({ svg: res }),
+      statusCode: res.$response.httpResponse.statusCode,
+      body: JSON.stringify({ key: null }),
     }
   } catch (err) {
     return {
