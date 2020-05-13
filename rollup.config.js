@@ -14,7 +14,14 @@ export default {
       format: 'cjs',
     },
   ],
-  external: ['aws-sdk', 'imgix-core-js', ...builtins],
+  external: [
+    'aws-sdk',
+    'axios',
+    'imgix-core-js',
+    'potrace',
+    'svgo',
+    ...builtins,
+  ],
   plugins: [
     progress(),
     typescript({
