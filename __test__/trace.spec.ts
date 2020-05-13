@@ -3,7 +3,7 @@ import { DUMMY_IMAGE } from './../src/__mocks__/fetch-thumb'
 import trace from '../src/trace'
 
 describe('trace()', () => {
-  it.skip('resolves svg', async () => {
+  it('resolves svg', async () => {
     expect.assertions(1)
     return expect(trace(Buffer.from(DUMMY_IMAGE))).resolves.toMatchSnapshot()
   })
