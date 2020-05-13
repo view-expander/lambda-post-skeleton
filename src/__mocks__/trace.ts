@@ -1,5 +1,7 @@
-export default jest
-  .fn()
-  .mockResolvedValue(
-    '<svg width="8" height="8" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0)"><path fill="#fff" d="M0 0h8v8H0z"/><path fill="#000" d="M0 0h4v4H0zM4 4h4v4H4z"/></g><defs><clipPath id="clip0"><path fill="#fff" d="M0 0h8v8H0z"/></clipPath></defs></svg>'
-  )
+export const DUMMY_TRACED_IMAGE = `
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" version="1.1">
+  <path d="M -0 66.096 L -0 132.192 57.250 131.887 C 120.960 131.548, 119.004 131.357, 122.692 138.267 C 124.279 141.240, 124.393 146.095, 124.113 198.750 L 123.808 256 189.781 256 L 255.755 256 256.484 130.750 C 256.885 61.862, 257.008 4.150, 256.757 2.500 C 256.505 0.850, 256.232 27.513, 256.150 61.750 L 256 124 209.750 124.250 C 144.172 124.604, 141.972 124.554, 138.219 122.613 C 131.391 119.082, 131.567 120.896, 131.889 57.250 L 132.179 -0 66.089 -0 L 0 0 -0 66.096 M 0.472 66.500 C 0.472 102.800, 0.597 117.505, 0.750 99.177 C 0.902 80.850, 0.902 51.150, 0.749 33.177 C 0.597 15.205, 0.472 30.200, 0.472 66.500" stroke="none" fill="#cccccc" fill-rule="evenodd"/>
+</svg>
+`
+
+export default jest.fn().mockResolvedValue(DUMMY_TRACED_IMAGE)

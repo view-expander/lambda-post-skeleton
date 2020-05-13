@@ -1,8 +1,10 @@
 import { DUMMY_IMAGE } from './../src/__mocks__/fetch-thumb'
 import { handler } from '../src'
 import fetchThumb from '../src/fetch-thumb'
+import optimize from '../src/optimize'
 import trace from '../src/trace'
 jest.mock('../src/fetch-thumb')
+jest.mock('../src/optimize')
 jest.mock('../src/trace')
 
 describe('handler()', () => {
@@ -24,6 +26,16 @@ describe('handler()', () => {
     } as any)
 
     return expect(trace).toHaveBeenCalled()
+  })
+
+  it('calls optimize()', async () => {
+    expect.assertions(1)
+
+    await handler({
+      pathParameters: { key: 'image.jpg' },
+    } as any)
+
+    return expect(optimize).toHaveBeenCalled()
   })
 
   it('returns response', () => {
