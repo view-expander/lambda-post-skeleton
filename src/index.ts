@@ -6,14 +6,13 @@ export async function handler(
   event: APIGatewayEvent
 ): Promise<APIGatewayProxyResult> {
   try {
-    if (
-      event.queryStringParameters?.key === undefined ||
-      event.queryStringParameters.key === null
-    ) {
+    const { key } =
+      event.body !== null ? JSON.parse(event.body) : { key: undefined }
+
+    if (typeof key !== 'string') {
       throw new Error('Object key is required')
     }
 
-    const { key } = event.queryStringParameters
     const res = await createSkeletonImage(key)
       .then((svg) =>
         postSkeletonImage(svg, key.replace(/^(.+)\.jpg$/, '$1.svg'))

@@ -10,7 +10,7 @@ describe('handler()', () => {
     expect.assertions(1)
 
     await handler({
-      queryStringParameters: { key: 'image.jpg' },
+      body: JSON.stringify({ key: 'image.jpg' }),
     } as any)
 
     return expect(createSkeletonImage).toHaveBeenCalledWith('image.jpg')
@@ -20,7 +20,7 @@ describe('handler()', () => {
     expect.assertions(1)
 
     await handler({
-      queryStringParameters: { key: 'image.jpg' },
+      body: JSON.stringify({ key: 'image.jpg' }),
     } as any)
 
     return expect(postSkeletonImage).toHaveBeenCalledWith(
@@ -33,7 +33,7 @@ describe('handler()', () => {
     expect.assertions(1)
     return expect(
       handler({
-        queryStringParameters: { key: 'image.jpg' },
+        body: JSON.stringify({ key: 'image.jpg' }),
       } as any)
     ).resolves.toMatchSnapshot()
   })
@@ -49,7 +49,7 @@ describe('handler()', () => {
 
     return expect(
       handler({
-        queryStringParameters: { key: 'image.jpg' },
+        body: JSON.stringify({ key: 'image.jpg' }),
       } as any)
     ).resolves.toMatchSnapshot()
   })
@@ -62,7 +62,7 @@ describe('handler()', () => {
 
     return expect(
       handler({
-        queryStringParameters: { key: 'image.jpg' },
+        body: JSON.stringify({ key: 'image.jpg' }),
       } as any)
     ).resolves.toMatchSnapshot()
   })
