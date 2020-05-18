@@ -21,7 +21,7 @@ Object {
     "transformResponse": Array [
       [Function],
     ],
-    "url": "/photo/image.jpg",
+    "url": "/source/image.jpg",
     "validateStatus": [Function],
     "xsrfCookieName": "XSRF-TOKEN",
     "xsrfHeaderName": "X-XSRF-TOKEN",
@@ -31,7 +31,7 @@ Object {
     "content-type": "image/jpeg",
   },
   "request": Object {
-    "responseUrl": "/photo/image.jpg",
+    "responseUrl": "/source/image.jpg",
   },
   "status": 200,
 }

@@ -17,10 +17,10 @@ describe('fetch-thumb()', () => {
   it('resolves arrayBuffer', async () => {
     expect.assertions(1)
 
-    mock.onGet('/photo/image.jpg').reply(200, DUMMY_IMAGE, {
+    mock.onGet('/source/image.jpg').reply(200, DUMMY_IMAGE, {
       'content-type': 'image/jpeg',
     })
 
-    return expect(fetchThumb('image.jpg')).resolves.toMatchSnapshot()
+    return expect(fetchThumb('/source/image.jpg')).resolves.toMatchSnapshot()
   })
 })

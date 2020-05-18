@@ -7,10 +7,10 @@ jest.mock('../src/optimize')
 jest.mock('../src/trace')
 
 describe('createSkeletonImage()', () => {
-  beforeEach(() => createSkeletonImage('image.jpg'))
+  beforeEach(() => createSkeletonImage('source/image.jpg'))
 
   it('calls fetchThumb()', () =>
-    expect(fetchThumb).toHaveBeenCalledWith('image.jpg'))
+    expect(fetchThumb).toHaveBeenCalledWith('source/image.jpg'))
 
   it('calls trace()', () => expect(trace).toHaveBeenCalled())
 
