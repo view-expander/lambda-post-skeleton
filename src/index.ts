@@ -1,6 +1,7 @@
 import { APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda'
 import createSkeletonImage from './create-skeleton-image'
 import postSkeletonImage from './post-skeleton-image'
+import rename from './rename'
 
 export async function handler(
   event: APIGatewayEvent
@@ -14,9 +15,7 @@ export async function handler(
     }
 
     const res = await createSkeletonImage(key)
-      .then((svg) =>
-        postSkeletonImage(svg, key.replace(/^(.+)\.jpg$/, '$1.svg'))
-      )
+      .then((svg) => postSkeletonImage(svg, rename(key)))
       .catch((err) => {
         throw err
       })

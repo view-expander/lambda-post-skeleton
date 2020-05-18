@@ -10,22 +10,22 @@ describe('handler()', () => {
     expect.assertions(1)
 
     await handler({
-      body: JSON.stringify({ key: 'image.jpg' }),
+      body: JSON.stringify({ key: 'source/image.jpg' }),
     } as any)
 
-    return expect(createSkeletonImage).toHaveBeenCalledWith('image.jpg')
+    return expect(createSkeletonImage).toHaveBeenCalledWith('source/image.jpg')
   })
 
   it('calls postSkeletonImage()', async () => {
     expect.assertions(1)
 
     await handler({
-      body: JSON.stringify({ key: 'image.jpg' }),
+      body: JSON.stringify({ key: 'source/image.jpg' }),
     } as any)
 
     return expect(postSkeletonImage).toHaveBeenCalledWith(
       DUMMY_OPTIMIZED_IMAGE,
-      'image.svg'
+      'skeleton/image.svg'
     )
   })
 
@@ -33,7 +33,7 @@ describe('handler()', () => {
     expect.assertions(1)
     return expect(
       handler({
-        body: JSON.stringify({ key: 'image.jpg' }),
+        body: JSON.stringify({ key: 'source/image.jpg' }),
       } as any)
     ).resolves.toMatchSnapshot()
   })
@@ -49,7 +49,7 @@ describe('handler()', () => {
 
     return expect(
       handler({
-        body: JSON.stringify({ key: 'image.jpg' }),
+        body: JSON.stringify({ key: 'source/image.jpg' }),
       } as any)
     ).resolves.toMatchSnapshot()
   })
@@ -62,7 +62,7 @@ describe('handler()', () => {
 
     return expect(
       handler({
-        body: JSON.stringify({ key: 'image.jpg' }),
+        body: JSON.stringify({ key: 'source/image.jpg' }),
       } as any)
     ).resolves.toMatchSnapshot()
   })
