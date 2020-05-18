@@ -2,10 +2,10 @@ import rename from '../src/rename'
 
 describe('rename()', () => {
   it('returns renamed key', () => {
-    expect(rename('source/image.jpg')).toEqual('skeleton/image.svg')
+    expect(rename('image.jpg')).toEqual('image.svg')
   })
 
   it('throws error', () => {
-    expect(() => rename('image.jpg')).toThrowError('Invalid key')
+    expect(() => rename('image.png')).toThrowError('Invalid key')
   })
 })

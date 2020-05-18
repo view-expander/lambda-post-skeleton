@@ -1,9 +1,9 @@
 export default (key: string) => {
-  const regExp = /^source\/(.+?)\.jpg$/
+  const regExp = /^(.+?)\.jpg$/
 
   if (!regExp.test(key)) {
     throw new Error('Invalid key')
   }
 
-  return key.replace(regExp, 'skeleton/$1.svg')
+  return key.replace(regExp, '$1.svg')
 }
