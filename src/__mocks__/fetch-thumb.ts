@@ -9,9 +9,11 @@ export const DUMMY_IMAGE = new Uint8Array(
 
 export default jest.fn().mockImplementation(async (key: string) => {
   const mock = new MockAdapter(api)
-  mock.onGet(key).reply(200, DUMMY_IMAGE, { 'content-type': 'image/jpeg' })
+  mock
+    .onGet(`source/${key}`)
+    .reply(200, DUMMY_IMAGE, { 'content-type': 'image/jpeg' })
 
-  const res = await api.get(key, {
+  const res = await api.get(`/source/${key}`, {
     params: {
       size: 'thumb',
     },

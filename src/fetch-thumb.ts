@@ -1,7 +1,7 @@
 import api from './api'
 
 export default (key: string) =>
-  api.get<ArrayBuffer>(key, {
+  api.get<ArrayBuffer>(`/source/${key}`, {
     headers: {
       Accept: 'image/jpeg',
     },

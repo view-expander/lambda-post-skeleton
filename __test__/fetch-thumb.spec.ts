@@ -21,6 +21,6 @@ describe('fetch-thumb()', () => {
       'content-type': 'image/jpeg',
     })
 
-    return expect(fetchThumb('/source/image.jpg')).resolves.toMatchSnapshot()
+    return expect(fetchThumb('image.jpg')).resolves.toMatchSnapshot()
   })
 })
