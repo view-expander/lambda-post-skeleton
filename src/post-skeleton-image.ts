@@ -12,7 +12,7 @@ export default async (svg: string, key: string) => {
     return s3
       .putObject({
         Bucket,
-        Key: key,
+        Key: `skeleton/${key}`,
         Body: svg,
         ContentType: 'image/svg+xml',
       })
